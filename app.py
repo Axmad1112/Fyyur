@@ -10,8 +10,8 @@ from flask import Flask, render_template, request, flash, redirect, url_for, abo
 from flask_migrate import Migrate
 from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
-from models import *
 from forms import *
+
 
 # ----------------------------------------------------------------------------#
 # App Config.
@@ -23,7 +23,7 @@ app.config.from_object('config')
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-
+from models import *
 # -------------- --------------------------------------------------------------#
 # Filters.
 # ----------------------------------------------------------------------------#
@@ -197,26 +197,6 @@ def show_venue(venue_id):
     print(venue.genres)
     return render_template('pages/show_venue.html', venue=data)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #  Update
 #  ----------------------------------------------------------------
 
@@ -272,22 +252,6 @@ def edit_venue_submission(venue_id):
         flash(f'Venue was successfully updated!')
     return redirect(url_for('show_venue', venue_id=venue_id))
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #  Delete
 #  ----------------------------------------------------------------
 
@@ -309,11 +273,6 @@ def delete_venue(venue_id):
     if not error: 
         flash(f'Venue {venue_id} was successfully deleted.')
     return render_template('pages/home.html')
-
-
-
-
-
 
 #  Create
 #  ----------------------------------------------------------------
@@ -350,8 +309,6 @@ def create_artist_submission():
     finally:
         db.session.close()
     return render_template('pages/home.html')
-
-
 
 #  Artists
 #  ----------------------------------------------------------------

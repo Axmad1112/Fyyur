@@ -4,7 +4,6 @@
 from app import db
 from sqlalchemy.dialects.postgresql import ARRAY
 
-
 # ----------------------------------------------------------------------------#
 # Models.
 # ----------------------------------------------------------------------------#
@@ -55,7 +54,7 @@ class Show(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     artist_id = db.Column(db.Integer, db.ForeignKey('artists.id'), nullable=False)
     venue_id = db.Column(db.Integer, db.ForeignKey('venues.id'), nullable=False)
-    start_time = db.Column(db.DateTime, default=datetime.now(), nullable=False)
+    start_time = db.Column(db.DateTime, nullable=False)
 
     def __repr__(self):
         return f'<Show {self.id} {self.artist_id} {self.venue_id} {self.start_time}>'
