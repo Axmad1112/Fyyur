@@ -71,6 +71,9 @@
 		{% endfor %}
 	</div>
 </section>
-
+<section>
+    <a href='/artists/{{ artist.id }}/edit'><button class="btn btn-primary btn-lg">Edit Artist</button></a>
+    <a href="/artists/{{ artist.id }}/del"><button class="btn btn-danger btn-lg">Delete</button></a>
+</section>
 {% endblock %}
 
